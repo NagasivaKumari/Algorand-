@@ -1,0 +1,72 @@
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-header {
+    background: #1a1a1a;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.app-main {
+    flex: 1;
+    padding: 2rem;
+    background: #f5f5f5;
+}
+
+.app-footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.main-navigation {
+    background: #333;
+    padding: 1rem;
+}
+
+.main-navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.wallet-connect {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.transaction-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transaction-card.status-pending {
+    border-left: 4px solid #ffd700;
+}
+
+.transaction-card.status-completed {
+    border-left: 4px solid #4caf50;
+}
+
+.transaction-card.status-failed {
+    border-left: 4px solid #f44336;
+}
