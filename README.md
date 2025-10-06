@@ -44,5 +44,17 @@ MIT — see `LICENSE`.
 - Wallet connector integrations
 - CI workflow for build + (future) tests
 
+## Ecosystem Mapping (Electric Capital)
+If you plan to submit this project to the Electric Capital `crypto-ecosystems` repository, a prepared snippet is available in `electric-capital-snippet.toml`.
+
+Submission steps summary:
+1. Fork `electric-capital/crypto-ecosystems`
+2. Locate the Algorand ecosystem TOML (e.g., `data/ecosystems/a/algorand.toml`)
+3. Insert the appropriate block from the snippet (match existing style)
+4. Commit with message: `feat(algorand): add AlgoSafe wallet project`
+5. Open PR and respond to any reviewer feedback
+
+Consider renaming this repository to `algosafe` before submission for clarity.
+
 ---
 For the full application documentation, open `algosafe/README.md`.

@@ -1,0 +1,31 @@
+# Electric Capital crypto-ecosystems submission snippet
+# Insert this into the Algorand ecosystem file (algorand.toml) following existing format.
+# Choose the block style that matches current file. Prefer [[project]] if present.
+
+# --- Style A: Project Block ---
+[[project]]
+name = "AlgoSafe"
+# Consider renaming repository to "algosafe" before submission for clarity.
+description = "Algorand multi-signature and time-locked wallet (React + TypeScript)."
+homepage = "https://github.com/NagasivaKumari/Algorand-"
+license = "MIT"
+category = "wallet"
+tags = ["algorand", "wallet", "multisig", "timelock", "security"]
+
+  [[project.repo]]
+  url = "https://github.com/NagasivaKumari/Algorand-"
+
+# --- Style B: Flat Repo Block ---
+# [[repo]]
+# url = "https://github.com/NagasivaKumari/Algorand-"
+# tags = ["wallet", "multisig", "timelock"]
+
+# --- Style C: GitHub Repositories Array ---
+# github_repositories = [
+#   "NagasivaKumari/Algorand-"
+# ]
+
+# After insertion:
+# 1. Validate TOML formatting if tools exist.
+# 2. Commit with message: feat(algorand): add AlgoSafe wallet project
+# 3. Open PR to electric-capital/crypto-ecosystems
