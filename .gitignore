@@ -33,3 +33,6 @@ yarn-error.log*
 /artifacts
 .algorand
 /goal
+
+# External ecosystem repo clone (Electric Capital) — do not commit
+crypto-ecosystems/
