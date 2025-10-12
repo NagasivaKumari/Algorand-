@@ -1,4 +1,6 @@
 import algosdk from 'algosdk';
+import WalletConnect from '@walletconnect/client';
+import QRCodeModal from '@walletconnect/qrcode-modal';
 
 const algodClient = new algosdk.Algodv2(
     '',
@@ -34,3 +36,22 @@ export const createTransaction = async (
         throw error;
     }
 };
+
+/**
+ * Initializes a WalletConnect session.
+ * @returns {WalletConnect} The WalletConnect instance.
+ */
+export function initializeWalletConnect() {
+    const connector = new WalletConnect({
+        bridge: 'https://bridge.walletconnect.org',
+    });
+
+    if (!connector.connected) {
+        connector.createSession();
+        QRCodeModal.open(connector.uri, () => {
+            console.log('QR Code Modal closed');
+        });
+    }
+
+    return connector;
+}
