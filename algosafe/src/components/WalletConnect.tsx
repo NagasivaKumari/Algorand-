@@ -5,6 +5,7 @@ import { initializeWalletConnect } from '../utils/algorand';
 export const WalletConnectButton: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [connected, setConnected] = useState(false);
+    const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
     const handleConnect = () => {
         setLoading(true);
@@ -12,6 +13,7 @@ export const WalletConnectButton: React.FC = () => {
             const connector = initializeWalletConnect();
             console.log('WalletConnect initialized:', connector);
             setConnected(true);
+            setWalletAddress('0x1234...abcd'); // Mock wallet address for now
         } catch (error) {
             console.error('Error initializing WalletConnect:', error);
         } finally {
@@ -21,6 +23,7 @@ export const WalletConnectButton: React.FC = () => {
 
     const handleDisconnect = () => {
         setConnected(false);
+        setWalletAddress(null);
         console.log('Wallet disconnected');
     };
 
@@ -36,13 +39,16 @@ export const WalletConnectButton: React.FC = () => {
                     {loading ? 'Connecting...' : 'Connect Wallet'}
                 </button>
             ) : (
-                <button
-                    onClick={handleDisconnect}
-                    className="wallet-disconnect-button"
-                    title="Click to disconnect your wallet"
-                >
-                    Disconnect Wallet
-                </button>
+                <div>
+                    <p>Connected as: {walletAddress}</p>
+                    <button
+                        onClick={handleDisconnect}
+                        className="wallet-disconnect-button"
+                        title="Click to disconnect your wallet"
+                    >
+                        Disconnect Wallet
+                    </button>
+                </div>
             )}
         </div>
     );
