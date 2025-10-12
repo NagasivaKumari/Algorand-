@@ -3,14 +3,29 @@
 A TypeScript/React toolkit to manage Algorand wallets and secure transactions with Multi‑Sig and Timelock contracts. Includes an “AlgoSafe” sub‑app for wallet connection, transaction history, and secure execution flows.
 
 ## Features
+- Wallet connection and session management (WalletConnect/Pera-compatible)
+- Multi‑signature transactions (M‑of‑N) helpers
+- Timelock contract utilities for scheduled execution windows
+- Transaction preparation, review, and history UI
+- Reusable components: `WalletConnect`, `TransactionCard`, `Navigation`, `Layout`
+- Settings and Theme contexts for app configuration and theming
+- Modular architecture separating core services, features, and shared UI
 
 ## Tech Stack
+- React + TypeScript
+- React Context (Theme, Settings)
+- CSS (see `algosafe/src/styles/components.css`)
+- Algorand integration via:
   - `src/core/services/algorand/AlgorandService.ts`
   - `algosafe/src/utils/algorand.ts`
+- Contract helpers:
   - `algosafe/src/contracts/MultiSigContract.ts`
   - `algosafe/src/contracts/TimeLockerContract.ts`
+- Testing: React Testing Library (`algosafe/src/App.test.tsx`)
+- Build/Config: TypeScript (`tsconfig.json` in root and `algosafe/`), per-app `package.json`
 
 ## Repo Structure
+- Root app
   - `src/core/services/algorand/AlgorandService.ts` — Algorand client/service layer
   - `src/features/multi-sig` — Multi‑sig types and structures
   - `src/features/wallet` — Wallet types
@@ -18,6 +33,7 @@ A TypeScript/React toolkit to manage Algorand wallets and secure transactions wi
   - `src/layouts/MainLayout.tsx` — App layout
   - `src/routes.tsx` — Routing
   - `src/App.tsx`, `src/index.tsx` — Entry points
+- AlgoSafe sub‑app (`algosafe/`)
   - `src/components/WalletConnect.tsx` — Wallet connect UI
   - `src/components/TransactionCard.tsx` — Transaction display
   - `src/components/Navigation.tsx`, `src/components/Layout.tsx` — App shell
@@ -30,6 +46,9 @@ A TypeScript/React toolkit to manage Algorand wallets and secure transactions wi
 ## Getting Started
 
 Prerequisites:
+- Node.js 18+
+- npm or yarn
+- An Algorand wallet (e.g., Pera, WalletConnect-compatible)
 
 Install and run:
 
@@ -44,19 +63,25 @@ npm install
 npm start
 ```
 
-The dev server will run on http://localhost:3000
+## WalletConnect Usage
 
-- Algorand TestNet/MainNet support (AlgoNode endpoints)
-- Roadmap-driven expansion (wallet integrations, offline signing, TEAL templates)
+The application supports WalletConnect for connecting and disconnecting wallets. Follow these steps:
 
-## Why Separate Folder?
+1. Click the **Connect Wallet** button to initiate a connection.
+2. Scan the QR code using a WalletConnect-compatible wallet.
+3. Once connected, you can interact with the application.
+4. To disconnect, click the **Disconnect Wallet** button.
+
+### Features
+- Secure wallet connection using WalletConnect.
+- Easy disconnection with a single click.
+- Accessible button styles for better usability.
+
+## Contributing
+See `CONTRIBUTING.md` for the workflow and guidelines.
+
 ## License
-MIT — see `LICENSE`.
-- Wallet connector integrations
-- CI workflow for build + (future) tests
+See `LICENSE`.
 
-## Ecosystem Mapping (Electric Capital)
-
-Submission steps summary:
-1. Fork `electric-capital/crypto-ecosystems`
-2. Locate the Algorand ecosystem TOML (e.g., `data/ecosystems/a/algorand.
+## Code of Conduct
+See `CODE_OF_CONDUCT.md`.
