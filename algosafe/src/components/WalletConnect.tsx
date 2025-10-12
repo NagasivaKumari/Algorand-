@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useWalletConnection } from '../hooks/useWalletConnection';
 import { initializeWalletConnect } from '../utils/algorand';
 
 const WalletConnect: React.FC = () => {
     const { address, connected, error, connectWallet, disconnectWallet } = useWalletConnection();
+    const [loading, setLoading] = useState(false);
 
     const handleConnect = () => {
-        const connector = initializeWalletConnect();
-        console.log('WalletConnect initialized:', connector);
+        setLoading(true);
+        try {
+            const connector = initializeWalletConnect();
+            console.log('WalletConnect initialized:', connector);
+        } catch (error) {
+            console.error('Error initializing WalletConnect:', error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="wallet-connect">
             {!connected ? (
-                <button onClick={connectWallet}>Connect Wallet</button>
+                <button onClick={handleConnect} className="wallet-connect-button" disabled={loading}>
+                    {loading ? 'Connecting...' : 'Connect Wallet'}
+                </button>
             ) : (
                 <div className="wallet-info">
                     <span className="address">{address}</span>
