@@ -1,4 +1,6 @@
 import { useState, useCallback } from 'react';
+import QRCodeModal from '@walletconnect/qrcode-modal';
+import { initializeWalletConnect } from '../utils/algorand';
 
 interface WalletState {
     address: string | null;
@@ -15,14 +17,30 @@ export const useWalletConnection = () => {
 
     const connectWallet = useCallback(async () => {
         try {
-            // Wallet connection logic will be implemented here
-            setWalletState({
-                address: 'placeholder-address',
-                connected: true,
-                error: null,
+            const connector = initializeWalletConnect();
+
+            connector.on('connect', (error, payload) => {
+                if (error) {
+                    throw error;
+                }
+
+                const { accounts } = payload.params[0];
+                setWalletState({
+                    address: accounts[0],
+                    connected: true,
+                    error: null,
+                });
+            });
+
+            connector.on('disconnect', () => {
+                setWalletState({
+                    address: null,
+                    connected: false,
+                    error: null,
+                });
             });
         } catch (error) {
-            setWalletState(prev => ({
+            setWalletState((prev) => ({
                 ...prev,
                 error: 'Failed to connect wallet',
             }));
