@@ -46,11 +46,16 @@ export function initializeWalletConnect() {
         bridge: 'https://bridge.walletconnect.org',
     });
 
-    if (!connector.connected) {
-        connector.createSession();
-        QRCodeModal.open(connector.uri, () => {
-            console.log('QR Code Modal closed');
-        });
+    try {
+        if (!connector.connected) {
+            connector.createSession();
+            QRCodeModal.open(connector.uri, () => {
+                console.log('QR Code Modal closed');
+            });
+        }
+    } catch (error) {
+        console.error('Failed to create WalletConnect session:', error);
+        throw error;
     }
 
     return connector;
