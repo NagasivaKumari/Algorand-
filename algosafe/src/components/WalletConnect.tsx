@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useWalletConnection } from '../hooks/useWalletConnection';
 import { initializeWalletConnect } from '../utils/algorand';
 
-export const WalletConnectButton: React.FC = () => {
+const WalletConnectButton: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [connected, setConnected] = useState(false);
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
