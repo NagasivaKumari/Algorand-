@@ -18,7 +18,12 @@ export const WalletConnectButton: React.FC = () => {
     };
 
     return (
-        <button onClick={handleConnect} className="wallet-connect-button" disabled={loading}>
+        <button
+            onClick={handleConnect}
+            className="wallet-connect-button"
+            disabled={loading}
+            title="Click to connect your wallet"
+        >
             {loading ? 'Connecting...' : 'Connect Wallet'}
         </button>
     );
@@ -43,7 +48,12 @@ const WalletConnect: React.FC = () => {
     return (
         <div className="wallet-connect">
             {!connected ? (
-                <button onClick={handleConnect} className="wallet-connect-button" disabled={loading}>
+                <button
+                    onClick={handleConnect}
+                    className="wallet-connect-button"
+                    disabled={loading}
+                    title="Click to connect your wallet"
+                >
                     {loading ? 'Connecting...' : 'Connect Wallet'}
                 </button>
             ) : (
