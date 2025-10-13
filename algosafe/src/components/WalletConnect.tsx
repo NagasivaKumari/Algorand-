@@ -1,30 +1,15 @@
+
 import React, { useState } from 'react';
 import { useWalletConnection } from '../hooks/useWalletConnection';
-import { initializeWalletConnect } from '../utils/algorand';
 
 export const WalletConnectButton: React.FC = () => {
+    const { address, connected, error, connectWallet, disconnectWallet } = useWalletConnection();
     const [loading, setLoading] = useState(false);
-    const [connected, setConnected] = useState(false);
-    const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
-    const handleConnect = () => {
+    const handleConnect = async () => {
         setLoading(true);
-        try {
-            const connector = initializeWalletConnect();
-            console.log('WalletConnect initialized:', connector);
-            setConnected(true);
-            setWalletAddress('0x1234...abcd'); // Mock wallet address for now
-        } catch (error) {
-            console.error('Error initializing WalletConnect:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleDisconnect = () => {
-        setConnected(false);
-        setWalletAddress(null);
-        console.log('Wallet disconnected');
+        await connectWallet();
+        setLoading(false);
     };
 
     return (
@@ -40,9 +25,9 @@ export const WalletConnectButton: React.FC = () => {
                 </button>
             ) : (
                 <div>
-                    <p>Connected as: {walletAddress}</p>
+                    <p>Connected as: {address}</p>
                     <button
-                        onClick={handleDisconnect}
+                        onClick={disconnectWallet}
                         className="wallet-disconnect-button"
                         title="Click to disconnect your wallet"
                     >
@@ -50,6 +35,7 @@ export const WalletConnectButton: React.FC = () => {
                     </button>
                 </div>
             )}
+            {error && <p className="error">{error}</p>}
         </div>
     );
 };
