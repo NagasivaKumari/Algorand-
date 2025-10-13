@@ -43,6 +43,15 @@ A TypeScript/React toolkit to manage Algorand wallets and secure transactions wi
   - `src/pages/Dashboard.tsx` — Main dashboard
   - `src/hooks/useWalletConnection.ts`, `src/hooks/useTransactionHistory.ts` — Hooks
 
+
+## Project Goals
+
+- Provide secure multi-signature wallet management for Algorand users
+- Enable time-locked transactions for advanced asset control
+- Offer a user-friendly dashboard for transaction monitoring
+- Support wallet connection via WalletConnect and other providers
+- Maintain modular, testable, and well-documented code
+
 ## Getting Started
 
 Prerequisites:
@@ -53,7 +62,6 @@ Prerequisites:
 Install and run:
 
 ```bash
-
 
 # AlgoSafe sub‑app
 cd algosafe
