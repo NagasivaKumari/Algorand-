@@ -53,9 +53,7 @@ Prerequisites:
 Install and run:
 
 ```bash
-# Root app
-npm install
-npm run dev
+
 
 # AlgoSafe sub‑app
 cd algosafe
@@ -82,6 +80,5 @@ See `CONTRIBUTING.md` for the workflow and guidelines.
 
 ## License
 See `LICENSE`.
-
 ## Code of Conduct
 See `CODE_OF_CONDUCT.md`.
